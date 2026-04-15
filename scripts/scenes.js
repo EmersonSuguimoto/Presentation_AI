@@ -221,9 +221,23 @@
   });
 
   // ---------------------------------------------------------
-  // 09 — TRANSFORMER · arc draw + text reveal
+  // 09 — DEEPMIND · nobel cards + text reveal
   // ---------------------------------------------------------
   onSceneEnter('s9', (scene) => {
+    if (reduced) return;
+    gsap.from(scene.querySelectorAll('.col-text > *'), {
+      y: 24, opacity: 0, duration: .8, stagger: .1, ease: 'power3.out',
+    });
+    gsap.fromTo(scene.querySelectorAll('.nobel-card'),
+      { y: 40, opacity: 0, scale: 0.95 },
+      { y: 0, opacity: 1, scale: 1, duration: .9, stagger: .2, ease: 'power3.out', delay: .3 }
+    );
+  });
+
+  // ---------------------------------------------------------
+  // 10 — TRANSFORMER · arc draw + text reveal
+  // ---------------------------------------------------------
+  onSceneEnter('s10', (scene) => {
     if (reduced) return;
     gsap.from(scene.querySelectorAll('.col-text > *'), {
       y: 24, opacity: 0, duration: .8, stagger: .1, ease: 'power3.out',
@@ -231,9 +245,9 @@
   });
 
   // ---------------------------------------------------------
-  // 10 — CHATGPT · counter animation (0 → 100,000,000)
+  // 11 — CHATGPT · counter animation (0 → 100,000,000)
   // ---------------------------------------------------------
-  onSceneEnterEach('s10', (scene, mode) => {
+  onSceneEnterEach('s11', (scene, mode) => {
     const num = scene.querySelector('#bs-count');
     if (!num) return;
     if (reduced) { num.textContent = '100,000,000'; return; }
@@ -253,9 +267,9 @@
   });
 
   // ---------------------------------------------------------
-  // 11 — TODAY · card stagger
+  // 12 — TODAY · card stagger
   // ---------------------------------------------------------
-  onSceneEnter('s11', (scene) => {
+  onSceneEnter('s12', (scene) => {
     if (reduced) return;
     gsap.from(scene.querySelectorAll('.kicker, .display, .lede'), {
       y: 24, opacity: 0, duration: .8, stagger: .08, ease: 'power3.out',
@@ -271,9 +285,23 @@
   });
 
   // ---------------------------------------------------------
-  // 12 — OUTRO · questions reveal
+  // 13 — THE 2026 FRONTIER · card stagger
   // ---------------------------------------------------------
-  onSceneEnter('s12', (scene) => {
+  onSceneEnter('s13', (scene) => {
+    if (reduced) return;
+    gsap.from(scene.querySelectorAll('.kicker, .display, .lede'), {
+      y: 24, opacity: 0, duration: .8, stagger: .08, ease: 'power3.out',
+    });
+    gsap.fromTo(scene.querySelectorAll('.frontier-card'),
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: .7, stagger: .1, ease: 'power3.out', delay: .2 }
+    );
+  });
+
+  // ---------------------------------------------------------
+  // 14 — OUTRO · questions reveal
+  // ---------------------------------------------------------
+  onSceneEnter('s14', (scene) => {
     if (reduced) return;
     gsap.from(scene.querySelectorAll('.kicker, .display, .lede'), {
       y: 24, opacity: 0, duration: .8, stagger: .1, ease: 'power3.out',

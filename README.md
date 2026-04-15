@@ -2,7 +2,7 @@
 
 A scroll-driven, animated web presentation telling the 75-year story of Artificial Intelligence — from Turing's 1950 paper to today's reasoning agents. Built for an informal Electrolux team session, styled with the Electrolux brand frame and Kurzgesagt-inspired era palettes.
 
-> **Runtime:** ~20–25 minutes live · 12 scenes · single-page HTML · no build step
+> **Runtime:** ~20–25 minutes live · 14 scenes · single-page HTML · no build step
 
 ---
 
@@ -58,10 +58,12 @@ Open `http://localhost:8000` in Chrome, Edge, or Firefox.
 | 06 | Second Winter | 1987–1993 | Deeper ice |
 | 07 | Quiet Revolution | 1993–2011 | Warm 2000s web |
 | 08 | Deep Learning | 2012–2017 | Kurzgesagt cosmos |
-| 09 | Transformer Era | 2017–2022 | Cosmic gradient |
-| 10 | ChatGPT Moment | 2022–2024 | Full Kurzgesagt space |
-| 11 | Today · State of the Art | 2025–2026 | Futuristic neon + Electrolux tie-in |
-| 12 | Outro | — | Back to Electrolux navy |
+| 09 | DeepMind & Nobel Prizes | 2016–2024 | Deep cosmic + gold/green medals |
+| 10 | Transformer Era | 2017–2022 | Cosmic gradient |
+| 11 | ChatGPT Moment | 2022–2024 | Full Kurzgesagt space |
+| 12 | Today · State of the Art | 2025–2026 | Futuristic neon + Electrolux tie-in |
+| 13 | The 2026 Frontier | 2026 | Purple/blue gradient |
+| 14 | Outro | — | Back to Electrolux navy |
 
 For scene-by-scene speaker notes, fun facts, and discussion prompts, see [PRESENTATION_GUIDE.md](PRESENTATION_GUIDE.md).
 
@@ -90,7 +92,7 @@ All libraries loaded via CDN — no install, no bundler.
 
 ```
 Presentation_English/
-├── index.html                  # 12 <section> scenes + brand frame
+├── index.html                  # 15 <section> scenes (cover + 13 chapters + outro) + brand frame
 ├── styles/
 │   ├── base.css               # brand tokens, type scale, layout primitives
 │   └── scenes.css             # per-era theme overrides, scene illustrations

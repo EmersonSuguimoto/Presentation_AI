@@ -511,7 +511,70 @@
 }
 
 /* ===========================================================
-   09 — TRANSFORMER · cosmic gradient purple→pink
+   09 — DEEPMIND & NOBEL PRIZES
+   =========================================================== */
+.theme-deepmind {
+  --scene-bg: #001030;
+  --scene-bg2: #00204a;
+  --scene-fg: #fff;
+  --scene-fg-dim: rgba(255,255,255,0.7);
+  --scene-accent: #fbbe00;
+  --scene-accent-2: #00e5a0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(251,190,0,0.2), transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(0,229,160,0.15), transparent 50%),
+    linear-gradient(180deg, #001030 0%, #000a1e 100%);
+}
+
+.nobel-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.nobel-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.nobel-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(251,190,0,0.15);
+}
+.nobel-medal {
+  margin-bottom: 0.75rem;
+}
+.nobel-medal svg {
+  filter: drop-shadow(0 0 12px rgba(251,190,0,0.4));
+}
+.nobel-card:last-child .nobel-medal svg {
+  filter: drop-shadow(0 0 12px rgba(0,229,160,0.4));
+}
+.nobel-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #fbbe00;
+}
+.nobel-card:last-child h4 {
+  color: #00e5a0;
+}
+.nobel-card p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 0.4rem;
+}
+.nobel-note {
+  font-size: 0.82rem !important;
+  color: rgba(255,255,255,0.55) !important;
+  font-style: italic;
+}
+
+/* ===========================================================
+   10 — TRANSFORMER · cosmic gradient purple→pink
    =========================================================== */
 .theme-transformer {
   --scene-bg: #1a0136;
@@ -555,7 +618,7 @@
 .attn-illo text { font-weight: 500; }
 
 /* ===========================================================
-   10 — ChatGPT Moment · full Kurzgesagt bright
+   11 — ChatGPT Moment · full Kurzgesagt bright
    =========================================================== */
 .theme-chatgpt {
   --scene-bg: #001372;
@@ -620,7 +683,7 @@
 .bs-caption .dim { opacity: 0.6; font-size: 14px; }
 
 /* ===========================================================
-   11 — TODAY · futuristic neon data streams
+   12 — TODAY · futuristic neon data streams
    =========================================================== */
 .theme-today {
   --scene-bg: #05081a;
@@ -761,7 +824,94 @@
 }
 
 /* ===========================================================
-   12 — OUTRO · back to Electrolux navy + cosmos
+   13 — THE 2026 FRONTIER · vibrant gradient
+   =========================================================== */
+.theme-frontier {
+  --scene-bg: #08001a;
+  --scene-bg2: #120030;
+  --scene-fg: #fff;
+  --scene-fg-dim: rgba(255,255,255,0.7);
+  --scene-accent: #bf5af2;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(191,90,242,0.18), transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(0,122,255,0.12), transparent 55%),
+    linear-gradient(160deg, #0a0020 0%, #08001a 100%);
+}
+.theme-frontier .display.gradient {
+  background: linear-gradient(135deg, #bf5af2, #0a84ff, #30d158);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.frontier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+  margin: 30px 0 20px;
+}
+.frontier-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: transform 300ms var(--ease-out), border-color 300ms;
+}
+.frontier-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(191,90,242,0.35);
+}
+.frontier-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(191,90,242,0.18);
+  color: #bf5af2;
+  margin-bottom: 10px;
+}
+.frontier-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.frontier-card p {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--scene-fg-dim);
+}
+.frontier-status {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+.frontier-status.restricted {
+  background: rgba(255,69,58,0.15);
+  color: #ff453a;
+}
+/* card accent borders */
+.card-mythos   { border-left: 3px solid #ff453a; }
+.card-deepseek { border-left: 3px solid #30d158; }
+.card-gemma    { border-left: 3px solid #0a84ff; }
+.card-chinese  { border-left: 3px solid #ff9f0a; }
+.card-gpt      { border-left: 3px solid #64d2ff; }
+.card-openclaw { border-left: 3px solid #ffd60a; }
+.card-agents   { border-left: 3px solid #bf5af2; }
+
+/* Frontier compact at TV / 125% zoom */
+@media (max-height: 900px) {
+  .frontier-grid { margin: 16px 0 10px; gap: 12px; }
+  .frontier-card { padding: 14px 18px; }
+  .frontier-card p { margin: 0 0 8px; font-size: 14px; }
+}
+
+/* ===========================================================
+   14 — OUTRO · back to Electrolux navy + cosmos
    =========================================================== */
 .theme-outro {
   --scene-bg: #020a1a;
