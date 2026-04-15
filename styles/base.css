@@ -1,0 +1,428 @@
+/* =========================================================
+   Electrolux AI Presentation — base.css
+   Brand tokens, typography, layout primitives.
+   ========================================================= */
+
+:root {
+  /* --- Electrolux brand ---------------------------------------------------- */
+  --el-navy:       #041E41;
+  --el-navy-90:    rgba(4, 30, 65, 0.92);
+  --el-navy-deep:  #020f20;
+  --el-ink:        #0b0b0b;
+  --el-white:      #ffffff;
+  --el-cream:      #f6f3ec;
+
+  /* --- Kurzgesagt palette (used from scene 08 onward) ---------------------- */
+  --k-deep-blue:  #001372;
+  --k-purple:     #0b0054;
+  --k-red:        #e30050;
+  --k-orange:     #e32e01;
+  --k-yellow:     #fbbe00;
+
+  /* --- Default scene palette (overridden per theme in scenes.css) ---------- */
+  --scene-bg:     var(--el-navy-deep);
+  --scene-bg2:    #061a37;
+  --scene-fg:     var(--el-white);
+  --scene-fg-dim: rgba(255,255,255,0.68);
+  --scene-accent: var(--k-yellow);
+  --scene-accent-2: var(--k-red);
+
+  /* --- Type scale (Electrolux guidelines) ---------------------------------- */
+  --fs-display: 72px;
+  --fs-h2: 40px;
+  --fs-h3: 35px;
+  --fs-h4: 27px;
+  --fs-h5: 26px;
+  --fs-h6: 25px;
+  --fs-body: 18px;
+  --fs-small: 14px;
+  --fs-xs: 12px;
+
+  --lh: 1.4;
+  --ls: 0;
+
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --font-hand: 'Caveat', 'Brush Script MT', cursive;
+
+  /* --- Motion -------------------------------------------------------------- */
+  --ease-out:  cubic-bezier(.16,1,.3,1);
+  --ease-in:   cubic-bezier(.7,0,.84,0);
+  --ease-std:  cubic-bezier(.2,.8,.2,1);
+}
+
+/* ---------------------------------------------------------------------------
+   Global reset-ish
+   --------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: auto; } /* Lenis handles smoothing */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh);
+  letter-spacing: var(--ls);
+  color: var(--scene-fg);
+  background: var(--el-navy-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
+a { color: inherit; text-decoration: none; }
+ol, ul { margin: 0; padding: 0; list-style: none; }
+p { margin: 0 0 0.9em; }
+em { font-style: italic; }
+strong { font-weight: 700; }
+kbd {
+  display: inline-block; font-family: var(--font-mono); font-size: 11px;
+  padding: 2px 6px; border-radius: 4px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+}
+
+/* ---------------------------------------------------------------------------
+   Brand header (fixed frame)
+   --------------------------------------------------------------------------- */
+.brand-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 60px;
+  background: var(--el-navy);
+  color: var(--el-white);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+}
+
+.brand-mark {
+  display: inline-flex; align-items: center; gap: 14px;
+  height: 100%;
+}
+.brand-logo { height: 26px; width: auto; }
+.brand-wordmark {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  fill: var(--el-white);
+}
+.brand-divider {
+  width: 1px; height: 22px; background: rgba(255,255,255,0.18);
+}
+.brand-tag {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .brand-header { padding: 0 14px; }
+  .brand-divider, .brand-tag { display: none; }
+  .brand-nav { display: none; }
+  .brand-logo { height: 22px; }
+  .brand-wordmark { font-size: 18px; }
+}
+
+.brand-nav {
+  flex: 1;
+  display: flex; justify-content: center;
+}
+.rail {
+  display: flex; gap: 10px; align-items: center;
+}
+.rail li {
+  position: relative;
+}
+.rail button {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transition: background 260ms var(--ease-out), transform 260ms var(--ease-out);
+  padding: 0;
+}
+.rail button:hover { background: rgba(255,255,255,0.55); transform: scale(1.3); }
+.rail li.active button {
+  background: var(--k-yellow);
+  box-shadow: 0 0 10px rgba(251,190,0,0.7);
+  transform: scale(1.35);
+}
+.rail li .tooltip {
+  position: absolute; top: 22px; left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  white-space: nowrap;
+  font-size: 11px;
+  background: rgba(0,0,0,0.8); color: #fff;
+  padding: 6px 10px; border-radius: 4px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 160ms, transform 160ms;
+}
+.rail li:hover .tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.brand-menu {
+  width: 40px; height: 40px; border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--el-white);
+  transition: background 180ms;
+}
+.brand-menu:hover { background: rgba(255,255,255,0.08); }
+
+/* ---------------------------------------------------------------------------
+   Progress ring
+   --------------------------------------------------------------------------- */
+.progress-ring {
+  position: fixed; right: 22px; bottom: 22px;
+  width: 48px; height: 48px;
+  z-index: 90;
+  display: flex; align-items: center; justify-content: center;
+}
+.progress-ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.ring-track, .ring-fill {
+  fill: none; stroke-width: 3;
+}
+.ring-track { stroke: rgba(255,255,255,0.15); }
+.ring-fill {
+  stroke: var(--k-yellow);
+  stroke-linecap: round;
+  stroke-dasharray: 119.38; /* 2 * pi * 19 */
+  stroke-dashoffset: 119.38;
+  transition: stroke-dashoffset 240ms var(--ease-out), stroke 600ms var(--ease-out);
+}
+.ring-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--el-white);
+  letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------------------------
+   Mini-map overlay
+   --------------------------------------------------------------------------- */
+.mini-map[hidden] { display: none; }
+.mini-map {
+  position: fixed; inset: 0;
+  background: rgba(4,15,32,0.88);
+  backdrop-filter: blur(18px);
+  z-index: 200;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 60px 10vw;
+  color: var(--el-white);
+  animation: mm-fade 240ms var(--ease-out);
+}
+@keyframes mm-fade { from { opacity: 0; } to { opacity: 1; } }
+.mini-map h2 {
+  font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 24px;
+  font-weight: 500;
+}
+#mini-list {
+  display: grid; gap: 8px;
+}
+#mini-list li button {
+  display: flex; align-items: baseline; gap: 18px;
+  font-size: 22px; font-weight: 500;
+  padding: 10px 14px; border-radius: 8px; width: 100%;
+  transition: background 160ms, transform 160ms;
+  color: rgba(255,255,255,0.78);
+  text-align: left;
+}
+#mini-list li button:hover {
+  background: rgba(255,255,255,0.06); color: var(--el-white);
+  transform: translateX(6px);
+}
+#mini-list li.active button { color: var(--k-yellow); }
+#mini-list li button .mm-num {
+  font-family: var(--font-mono); font-size: 13px; opacity: 0.55;
+  width: 28px; flex-shrink: 0;
+}
+.mini-close {
+  position: absolute; top: 22px; right: 24px;
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 28px; line-height: 0;
+  background: rgba(255,255,255,0.08);
+}
+.mini-close:hover { background: rgba(255,255,255,0.14); }
+.mini-hint { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 24px; letter-spacing: 0.08em; }
+
+/* ---------------------------------------------------------------------------
+   Scene layout primitives
+   --------------------------------------------------------------------------- */
+main#story { padding-top: 60px; } /* clear fixed header */
+
+.scene {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: var(--scene-bg);
+  color: var(--scene-fg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 80px 8vw;
+  transition: background-color 800ms var(--ease-std);
+}
+
+.scene.short-scene { min-height: 70vh; }
+
+.scene-inner {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1200px;
+  display: grid;
+  overflow: hidden;
+}
+/* prevent grid items from blowing out the container */
+.scene-inner > * { min-width: 0; }
+.scene-inner.align-center { text-align: center; place-items: center; }
+/* ensure centered items don't overflow their grid cell */
+.scene-inner.align-center > * { max-width: 100%; }
+.scene-inner.two-col {
+  grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+
+.col-text, .col-art { min-width: 0; }
+
+@media (max-width: 1100px) {
+  .scene-inner.two-col { gap: 40px; }
+}
+@media (max-width: 900px) {
+  .scene-inner.two-col { grid-template-columns: 1fr; gap: 36px; }
+  .col-art { order: 2; }
+  .col-text { order: 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   Typography
+   --------------------------------------------------------------------------- */
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--scene-accent);
+  font-weight: 600;
+  margin: 0 0 18px;
+  opacity: 0.92;
+}
+.kicker.mono { font-family: var(--font-mono); letter-spacing: 0.1em; }
+.kicker.neon { color: #ff3ec8; text-shadow: 0 0 10px rgba(255,62,200,0.6); }
+.kicker.cold { color: #9fc7f5; letter-spacing: 0.3em; }
+
+.mega {
+  font-size: clamp(44px, 8.5vw, 108px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.display {
+  font-size: clamp(36px, 5.2vw, 72px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 18px;
+}
+.display.huge { font-size: clamp(44px, 7vw, 96px); }
+
+.lede {
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--scene-fg);
+  margin: 6px 0 18px;
+  max-width: 44ch;
+}
+.lede.dim { color: var(--scene-fg-dim); font-weight: 400; }
+
+.measure-center { max-width: 52ch; margin-left: auto; margin-right: auto; }
+
+.col-text p { font-size: var(--fs-body); line-height: 1.55; max-width: 42ch; }
+.col-text p.lede { max-width: 44ch; }
+
+.mono { font-family: var(--font-mono); }
+
+/* ---------------------------------------------------------------------------
+   Fact cards (shared)
+   --------------------------------------------------------------------------- */
+.fact {
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--scene-accent);
+  border-radius: 8px;
+  padding: 14px 18px 14px 20px;
+  margin: 16px 0;
+  max-width: 46ch;
+  backdrop-filter: blur(6px);
+}
+.fact p { margin: 0; font-size: 16px; line-height: 1.5; }
+.fact-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--scene-accent);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.fact-tag.pink { color: #ff2e7e; }
+.fact-tag.cyan { color: #4fe0ff; }
+.fact-tag.yellow { color: var(--k-yellow); }
+.fact-tag.ice { color: #a8d0ff; }
+.fact.center { margin-left: auto; margin-right: auto; text-align: center; }
+.fact.neon { background: rgba(255,62,200,0.06); border-left-color: #ff3ec8; }
+.fact.kurz { background: rgba(251,190,0,0.05); border-left-color: var(--k-yellow); }
+
+.fact-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  margin-top: 30px; max-width: 900px;
+}
+.fact-row .fact { max-width: none; margin: 0; }
+@media (max-width: 700px) {
+  .fact-row { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------------------
+   Utility fade-ups — GSAP handles reveal on scroll.
+   If JS fails, they're visible by default (graceful degradation).
+   --------------------------------------------------------------------------- */
+.fade-up, .fade-in { will-change: transform, opacity; }
+
+/* Pause scene-local CSS animations until the scene actually enters view.
+   Individual scene rules opt in via .anim-on-enter. */
+.scene .anim-on-enter { animation-play-state: paused; }
+.scene.is-in .anim-on-enter { animation-play-state: running; }
+
+/* ---------------------------------------------------------------------------
+   Illustrations — shared
+   --------------------------------------------------------------------------- */
+.illo { width: 100%; max-width: 440px; margin: 0 auto; }
+
+/* ---------------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .starfield .layer, .chalk-dust span, .snow-layer span { animation: none !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll cue (intro)
+   --------------------------------------------------------------------------- */
+.scroll-cue {
+  margin-top: 40px;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  animation: cue-bounce 2s infinite ease-in-out;
+}
+@keyframes cue-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}

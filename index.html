@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artificial Intelligence — A 75-year story in 12 scenes · Electrolux</title>
+  <meta name="description" content="A scroll-driven journey through the history of AI, from Turing's notebook to today's reasoning agents. Built for the Electrolux team." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/scenes.css" />
+</head>
+<body>
+
+  <!-- ========= FIXED ELECTROLUX FRAME ========= -->
+  <header class="brand-header" role="banner">
+    <a class="brand-mark" href="#s0" aria-label="Electrolux — start over">
+      <svg class="brand-logo" viewBox="0 0 200 40" aria-hidden="true">
+        <text x="0" y="28" class="brand-wordmark">Electrolux</text>
+      </svg>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-tag">AI · Team Session</span>
+    </a>
+
+    <nav class="brand-nav" aria-label="Chapters">
+      <ol class="rail" id="rail"></ol>
+    </nav>
+
+    <button class="brand-menu" id="open-map" aria-label="Open chapter map (Esc)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </header>
+
+  <!-- ========= PROGRESS RING ========= -->
+  <div class="progress-ring" aria-hidden="true">
+    <svg viewBox="0 0 44 44">
+      <circle cx="22" cy="22" r="19" class="ring-track"></circle>
+      <circle cx="22" cy="22" r="19" class="ring-fill" id="ring-fill"></circle>
+    </svg>
+    <span class="ring-num" id="ring-num">01</span>
+  </div>
+
+  <!-- ========= MINI-MAP OVERLAY ========= -->
+  <div class="mini-map" id="mini-map" role="dialog" aria-modal="true" aria-label="Chapter navigator" hidden>
+    <button class="mini-close" id="close-map" aria-label="Close map">×</button>
+    <h2>The journey</h2>
+    <ol id="mini-list"></ol>
+    <p class="mini-hint">press <kbd>Esc</kbd> to close · <kbd>←</kbd> <kbd>→</kbd> to jump</p>
+  </div>
+
+  <!-- ========= MAIN STORY ========= -->
+  <main id="story">
+
+    <!-- 00 INTRO -->
+    <section class="scene theme-intro" id="s0" data-idx="0" data-label="Intro">
+      <div class="starfield" aria-hidden="true">
+        <div class="layer l1"></div>
+        <div class="layer l2"></div>
+        <div class="layer l3"></div>
+      </div>
+      <div class="scene-inner align-center">
+        <div class="kicker">A Team Session · Electrolux</div>
+        <h1 class="mega fade-up">Artificial Intelligence</h1>
+        <p class="lede fade-up d1">A 75-year story in 12 scenes.</p>
+        <p class="lede dim fade-up d2">From Turing&rsquo;s notebook to Gemini&nbsp;3 — in one lifetime.</p>
+
+        <div class="intro-neuron fade-in d3" aria-hidden="true">
+          <svg viewBox="0 0 300 300">
+            <defs>
+              <radialGradient id="nGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fbbe00" stop-opacity="1"/>
+                <stop offset="45%" stop-color="#e32e01" stop-opacity=".45"/>
+                <stop offset="100%" stop-color="#041e41" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="150" cy="150" r="120" fill="url(#nGlow)" class="neuron-glow"/>
+            <circle cx="150" cy="150" r="18" fill="#fff" class="neuron-core"/>
+            <g stroke="#fff" stroke-width="1.2" fill="none" class="neuron-dendrites">
+              <path d="M150 150 L60 70"/><path d="M150 150 L40 160"/><path d="M150 150 L80 250"/>
+              <path d="M150 150 L240 70"/><path d="M150 150 L265 155"/><path d="M150 150 L230 240"/>
+              <path d="M150 150 L150 40"/><path d="M150 150 L150 260"/>
+            </g>
+          </svg>
+        </div>
+
+        <p class="scroll-cue fade-in d4">scroll ↓</p>
+      </div>
+    </section>
+
+    <!-- 01 THE DREAM -->
+    <section class="scene theme-dream" id="s1" data-idx="1" data-label="The Dream · 1940s–1955">
+      <div class="parchment-tex" aria-hidden="true"></div>
+      <div class="scene-inner two-col">
+        <div class="col-text">
+          <div class="kicker">Chapter 01 · 1940s – 1955</div>
+          <h2 class="display">The Dream</h2>
+          <p class="lede">Before it had a name.</p>
+          <p>In <strong>1950</strong>, Alan Turing asked: <em>&ldquo;Can machines think?&rdquo;</em> — and invented a test to find out. Seven years earlier, McCulloch &amp; Pitts had already sketched the first mathematical neuron.</p>
+
+          <div class="fact">
+            <span class="fact-tag">Fun&nbsp;fact</span>
+            <p>Turing called it <em>&ldquo;The Imitation Game&rdquo;</em> — a parlor game where you guess who&rsquo;s behind the curtain. Sound familiar?</p>
+          </div>
+          <div class="fact">
+            <span class="fact-tag">Curiosity</span>
+            <p>Turing predicted machines would fool humans 30% of the time by the <strong>year 2000</strong>. He was right — only ~23 years late.</p>
+          </div>
+        </div>
+        <div class="col-art">
+          <svg class="illo dream-illo" viewBox="0 0 400 500" aria-hidden="true">
+            <g class="dream-paper">
+              <rect x="20" y="20" width="360" height="460" fill="#f4e9cf" stroke="#8a6d3b" stroke-width="1"/>
+              <line x1="40" y1="90" x2="360" y2="90" stroke="#8a6d3b" stroke-opacity=".35"/>
+              <line x1="40" y1="130" x2="360" y2="130" stroke="#8a6d3b" stroke-opacity=".35"/>
+              <line x1="40" y1="170" x2="360" y2="170" stroke="#8a6d3b" stroke-opacity=".35"/>
+            </g>
+            <g class="dream-ink" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round">
+              <path class="ink-line" d="M50 60 Q 100 40, 180 55 T 350 55"/>
+              <path class="ink-line d1" d="M50 100 Q 150 85, 280 105"/>
+              <path class="ink-line d2" d="M50 140 Q 120 125, 260 135 T 350 140"/>
+              <circle class="ink-node" cx="200" cy="300" r="22" stroke-width="2.5"/>
+              <circle class="ink-node d1" cx="130" cy="240" r="14"/>
+              <circle class="ink-node d2" cx="270" cy="240" r="14"/>
+              <circle class="ink-node d3" cx="130" cy="360" r="14"/>
+              <circle class="ink-node d4" cx="270" cy="360" r="14"/>
+              <path class="ink-line d3" d="M142 248 L 185 290"/>
+              <path class="ink-line d4" d="M258 248 L 215 290"/>
+              <path class="ink-line d5" d="M142 352 L 185 310"/>
+              <path class="ink-line d6" d="M258 352 L 215 310"/>
+            </g>
+            <text x="200" y="440" text-anchor="middle" fill="#1a1a1a" class="dream-sign">— A. Turing, 1950</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 THE BIRTH -->
+    <section class="scene theme-birth" id="s2" data-idx="2" data-label="The Birth · 1956">
+      <div class="chalk-tex" aria-hidden="true"></div>
+      <div class="chalk-dust" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="scene-inner two-col">
+        <div class="col-art">
+          <svg class="illo birth-illo" viewBox="0 0 400 400" aria-hidden="true">
+            <g class="chalk-stroke" fill="none" stroke="#f5f5ee" stroke-width="2" stroke-linecap="round">
+              <path class="chw-1" d="M40 60 L360 60"/>
+              <text x="55" y="110" class="birth-word">ARTIFICIAL</text>
+              <text x="55" y="170" class="birth-word d1">INTELLIGENCE</text>
+              <path class="chw-2 d2" d="M40 195 L360 195"/>
+              <text x="55" y="250" class="birth-tiny">Dartmouth · Summer 1956</text>
+              <text x="55" y="285" class="birth-tiny d1">McCarthy · Minsky · Rochester · Shannon</text>
+              <g class="birth-eq d3">
+                <text x="55" y="340">∀ human-reason → ∃ machine-reason</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="col-text">
+          <div class="kicker">Chapter 02 · Summer 1956</div>
+          <h2 class="display">The Birth</h2>
+          <p class="lede">10 men, 2 months, 70 years.</p>
+          <p>At a summer workshop in <strong>Dartmouth College</strong>, John McCarthy coins two words that will change the world: <em>&ldquo;Artificial Intelligence.&rdquo;</em></p>
+          <div class="fact">
+            <span class="fact-tag">Fun&nbsp;fact</span>
+            <p>The proposal asked for <strong>2 months and 10 people</strong> to &ldquo;solve&rdquo; AI. We&rsquo;re still working on it.</p>
+          </div>
+          <div class="fact">
+            <span class="fact-tag">Curiosity</span>
+            <p>McCarthy picked the name &ldquo;AI&rdquo; partly to distance himself from Norbert Wiener&rsquo;s <em>cybernetics</em> camp. It was academic politics as much as science.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 GOLDEN YEARS -->
+    <section class="scene theme-golden" id="s3" data-idx="3" data-label="Golden Years · 1956–1974">
+      <div class="crt-scan" aria-hidden="true"></div>
+      <div class="scene-inner two-col">
+        <div class="col-text">
+          <div class="kicker mono">Chapter 03 · 1956 – 1974</div>
+          <h2 class="display glow">The Golden Years</h2>
+          <p class="lede">Symbols, logic, and a therapist.</p>
+          <p>Early AI runs on <em>rules</em>. The <strong>Logic Theorist</strong> proves math theorems. <strong>ELIZA</strong> (1966) pretends to be a therapist — and everyone falls for it.</p>
+          <div class="fact">
+            <span class="fact-tag">The ELIZA effect</span>
+            <p>Weizenbaum&rsquo;s <em>own secretary</em> asked him to leave the room so she could talk to ELIZA privately. He spent the rest of his life warning us not to trust chatbots.</p>
+          </div>
+          <div class="fact">
+            <span class="fact-tag">Curiosity</span>
+            <p>Shakey the Robot (1966–72) could navigate a room. It took <strong>8 hours</strong> to cross it.</p>
+          </div>
+        </div>
+        <div class="col-art">
+          <div class="crt-frame">
+            <div class="crt-screen">
+              <pre class="crt-text" id="eliza-typer">&gt; Hello, I am ELIZA.
+&gt; How are you feeling today?
+_ I feel nervous about AI.
+&gt; Why do you feel nervous about AI?
+_ Because it&apos;s getting smart fast.
+&gt; Tell me more about &quot;getting smart fast&quot;.
+█</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 FIRST WINTER -->
+    <section class="scene theme-winter" id="s4" data-idx="4" data-label="First Winter · 1974–1980">
+      <div class="snow-layer" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="scene-inner align-center">
+        <div class="kicker cold">Chapter 04 · 1974 – 1980</div>
+        <h2 class="display chilled">The First Winter</h2>
+        <p class="lede">The promises froze over.</p>
+        <p class="measure-center">The <strong>Lighthill Report</strong> tears apart AI&rsquo;s grand claims. Funding evaporates. Research slows to a crawl.</p>
+        <div class="fact center">
+          <span class="fact-tag ice">Moravec&rsquo;s Paradox</span>
+          <p>It&rsquo;s easy to teach a computer to play chess.<br>It&rsquo;s <em>hard</em> to teach it to tell a cat from a plastic bag.</p>
+        </div>
+        <div class="frozen-ui" aria-hidden="true">
+          <svg viewBox="0 0 400 120">
+            <rect x="10" y="20" width="380" height="80" rx="8" fill="#0b2545" stroke="#a8d0ff" stroke-width="1"/>
+            <text x="30" y="55" fill="#a8d0ff" font-family="JetBrains Mono,monospace" font-size="14">&gt; running promise.resolve()...</text>
+            <text x="30" y="80" fill="#6b9cdb" font-family="JetBrains Mono,monospace" font-size="14" class="frozen-err">ERROR: funding not found ❄</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 EXPERT SYSTEMS -->
+    <section class="scene theme-expert" id="s5" data-idx="5" data-label="Expert Systems · 1980–1987">
+      <div class="grid-floor" aria-hidden="true"></div>
+      <div class="scene-inner two-col">
+        <div class="col-text">
+          <div class="kicker neon">Chapter 05 · 1980 – 1987</div>
+          <h2 class="display neon-text">Expert Systems</h2>
+          <p class="lede">Rules all the way down.</p>
+          <p><strong>MYCIN</strong> diagnoses infections. <strong>XCON</strong> configures computers. Japan bets the farm on the <em>Fifth Generation Project</em>.</p>
+          <div class="fact neon">
+            <span class="fact-tag pink">Fun&nbsp;fact</span>
+            <p>DEC saved <strong>$40&nbsp;million/year</strong> with XCON — the first AI system that actually paid for itself.</p>
+          </div>
+          <div class="fact neon">
+            <span class="fact-tag cyan">Curiosity</span>
+            <p>The <em>LISP Machine</em> was a whole computer built to run one language. Then PCs killed it, and the whole industry with it.</p>
+          </div>
+        </div>
+        <div class="col-art">
+          <svg class="illo tree-illo" viewBox="0 0 400 400" aria-hidden="true">
+            <g class="tree-nodes">
+              <circle cx="200" cy="50" r="20" class="tn root"/>
+              <circle cx="110" cy="160" r="16" class="tn l1"/>
+              <circle cx="290" cy="160" r="16" class="tn l1"/>
+              <circle cx="60"  cy="270" r="14" class="tn l2"/>
+              <circle cx="160" cy="270" r="14" class="tn l2"/>
+              <circle cx="240" cy="270" r="14" class="tn l2"/>
+              <circle cx="340" cy="270" r="14" class="tn l2"/>
+              <circle cx="40"  cy="360" r="10" class="tn l3"/>
+              <circle cx="100" cy="360" r="10" class="tn l3"/>
+              <circle cx="180" cy="360" r="10" class="tn l3"/>
+              <circle cx="220" cy="360" r="10" class="tn l3"/>
+              <circle cx="300" cy="360" r="10" class="tn l3"/>
+              <circle cx="360" cy="360" r="10" class="tn l3"/>
+            </g>
+            <g class="tree-lines" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="200" y1="70" x2="110" y2="144"/>
+              <line x1="200" y1="70" x2="290" y2="144"/>
+              <line x1="110" y1="176" x2="60"  y2="256"/>
+              <line x1="110" y1="176" x2="160" y2="256"/>
+              <line x1="290" y1="176" x2="240" y2="256"/>
+              <line x1="290" y1="176" x2="340" y2="256"/>
+              <line x1="60"  y1="284" x2="40"  y2="350"/>
+              <line x1="60"  y1="284" x2="100" y2="350"/>
+              <line x1="160" y1="284" x2="180" y2="350"/>
+              <line x1="160" y1="284" x2="220" y2="350"/>
+              <line x1="340" y1="284" x2="300" y2="350"/>
+              <line x1="340" y1="284" x2="360" y2="350"/>
+            </g>
+            <text x="200" y="54" text-anchor="middle" class="tree-label">IF</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 SECOND WINTER -->
+    <section class="scene theme-winter2 short-scene" id="s6" data-idx="6" data-label="Second Winter · 1987–1993">
+      <div class="snow-layer dense" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="scene-inner align-center">
+        <div class="kicker cold">Chapter 06 · 1987 – 1993</div>
+        <h2 class="display frozen-deep">The Second Winter</h2>
+        <p class="lede">Rinse. Repeat.</p>
+        <p class="measure-center">Cheap PCs kill specialized AI hardware. LISP Machines go extinct. The field learns humility — again.</p>
+      </div>
+    </section>
+
+    <!-- 07 QUIET REVOLUTION -->
+    <section class="scene theme-ml" id="s7" data-idx="7" data-label="Quiet Revolution · 1993–2011">
+      <div class="scene-inner two-col">
+        <div class="col-text">
+          <div class="kicker">Chapter 07 · 1993 – 2011</div>
+          <h2 class="display">The Quiet Revolution</h2>
+          <p class="lede">Machine learning learns.</p>
+          <p>No hype. Just results. <strong>Deep Blue</strong> beats Kasparov in chess (1997). <strong>Watson</strong> wins Jeopardy! (2011). The Netflix Prize, PageRank, spam filters — AI is everywhere, and nobody calls it AI.</p>
+          <div class="fact">
+            <span class="fact-tag">Fun&nbsp;fact</span>
+            <p>Kasparov thought IBM was <em>cheating</em>. Deep Blue had made a move so strange it felt human. It was actually a <strong>bug</strong> — when stuck, Deep Blue picked a random legal move.</p>
+          </div>
+        </div>
+        <div class="col-art">
+          <svg class="illo chess-illo" viewBox="0 0 400 400" aria-hidden="true">
+            <g class="chess-board">
+              <!-- 8x8 board -->
+              <g class="board-squares">
+                <!-- row generation is static inline to keep it simple -->
+                <g class="row" data-row="0"></g>
+              </g>
+            </g>
+            <g class="chess-pieces">
+              <circle cx="80"  cy="320" r="20" class="piece white"/>
+              <circle cx="180" cy="320" r="20" class="piece white"/>
+              <circle cx="280" cy="320" r="20" class="piece white"/>
+              <circle cx="80"  cy="80"  r="20" class="piece black"/>
+              <circle cx="280" cy="80"  r="20" class="piece black"/>
+              <circle cx="180" cy="200" r="22" class="piece deep-blue pulse"/>
+            </g>
+            <text x="200" y="390" text-anchor="middle" class="chess-label">Deep Blue · 1997</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 DEEP LEARNING -->
+    <section class="scene theme-deeplearn" id="s8" data-idx="8" data-label="Deep Learning · 2012–2017">
+      <div class="cosmic" aria-hidden="true"></div>
+      <div class="scene-inner two-col">
+        <div class="col-art">
+          <svg class="illo nn-illo" viewBox="0 0 400 400" aria-hidden="true">
+            <g class="nn-lines" fill="none" stroke="#fbbe00" stroke-opacity=".55" stroke-width="1.2">
+              <!-- layer 1 to 2 -->
+              <g class="l12"></g>
+              <g class="l23"></g>
+              <g class="l34"></g>
+            </g>
+            <g class="nn-nodes">
+              <g class="layer" data-layer="1">
+                <circle cx="60" cy="90"  r="10"/>
+                <circle cx="60" cy="170" r="10"/>
+                <circle cx="60" cy="250" r="10"/>
+                <circle cx="60" cy="330" r="10"/>
+              </g>
+              <g class="layer" data-layer="2">
+                <circle cx="170" cy="70"  r="10"/>
+                <circle cx="170" cy="150" r="10"/>
+                <circle cx="170" cy="230" r="10"/>
+                <circle cx="170" cy="310" r="10"/>
+                <circle cx="170" cy="360" r="10"/>
+              </g>
+              <g class="layer" data-layer="3">
+                <circle cx="280" cy="90"  r="10"/>
+                <circle cx="280" cy="170" r="10"/>
+                <circle cx="280" cy="250" r="10"/>
+                <circle cx="280" cy="330" r="10"/>
+              </g>
+              <g class="layer" data-layer="4">
+                <circle cx="360" cy="170" r="12"/>
+                <circle cx="360" cy="250" r="12"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="col-text">
+          <div class="kicker">Chapter 08 · 2012 – 2017</div>
+          <h2 class="display kurz">The Awakening</h2>
+          <p class="lede">When neurons woke up.</p>
+          <p><strong>AlexNet (2012)</strong> drops ImageNet error by 10 points overnight. GPUs + big data + deep nets finally <em>click</em>.</p>
+          <div class="fact kurz">
+            <span class="fact-tag yellow">The bar-napkin moment</span>
+            <p>Ian Goodfellow invented <strong>GANs</strong> in a bar in 2014 — on a dare from colleagues. He went home and coded them that night.</p>
+          </div>
+          <div class="fact kurz">
+            <span class="fact-tag pink">Move 37</span>
+            <p>In 2016, <strong>AlphaGo</strong> played a move against Lee Sedol so alien that commentators said &ldquo;a human would never do that.&rdquo; AlphaGo Zero later learned Go from <em>nothing</em> and beat that version <strong>100–0</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 TRANSFORMER -->
+    <section class="scene theme-transformer" id="s9" data-idx="9" data-label="Transformers · 2017–2022">
+      <div class="cosmic deep" aria-hidden="true"></div>
+      <div class="attention-constellation" aria-hidden="true"></div>
+      <div class="scene-inner two-col">
+        <div class="col-text">
+          <div class="kicker">Chapter 09 · 2017 – 2022</div>
+          <h2 class="display gradient">The Transformer Era</h2>
+          <p class="lede"><em>&ldquo;Attention is all you need.&rdquo;</em></p>
+          <p>A 2017 Google paper quietly rewrites everything. GPT-1, 2, 3. Suddenly, scale becomes a <em>feature</em>. DALL·E and Stable Diffusion let AI <em>make pictures</em>.</p>
+          <div class="fact">
+            <span class="fact-tag">Fun&nbsp;fact</span>
+            <p>In 2018, an AI-generated portrait — <em>&ldquo;Edmond de Belamy&rdquo;</em> — sold at Christie&rsquo;s for <strong>$432,500</strong>. It was signed with the loss function that made it.</p>
+          </div>
+        </div>
+        <div class="col-art">
+          <svg class="illo attn-illo" viewBox="0 0 400 400" aria-hidden="true">
+            <defs>
+              <linearGradient id="attnGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e30050"/>
+                <stop offset="1" stop-color="#6a00f4"/>
+              </linearGradient>
+            </defs>
+            <g class="attn-grid"></g>
+            <g class="attn-words" font-family="JetBrains Mono, monospace" font-size="14" fill="#fff" text-anchor="middle">
+              <text x="50"  y="200">the</text>
+              <text x="130" y="200">cat</text>
+              <text x="210" y="200">sat</text>
+              <text x="290" y="200">on</text>
+              <text x="360" y="200">mat</text>
+            </g>
+            <g class="attn-arcs" fill="none" stroke="url(#attnGrad)" stroke-width="1.5" opacity=".85">
+              <path d="M130 195 Q 170 120, 210 195"/>
+              <path d="M210 195 Q 170 110, 130 195"/>
+              <path d="M130 205 Q 245 300, 360 205"/>
+              <path d="M210 205 Q 285 280, 360 205"/>
+              <path d="M50 205 Q 140 290, 210 205"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 CHATGPT MOMENT -->
+    <section class="scene theme-chatgpt" id="s10" data-idx="10" data-label="ChatGPT Moment · 2022–2024">
+      <div class="cosmic bright" aria-hidden="true"></div>
+      <div class="cute-swarm" aria-hidden="true">
+        <span class="cute c1"></span><span class="cute c2"></span><span class="cute c3"></span>
+        <span class="cute c4"></span><span class="cute c5"></span><span class="cute c6"></span>
+        <span class="cute c7"></span><span class="cute c8"></span><span class="cute c9"></span>
+      </div>
+      <div class="scene-inner align-center">
+        <div class="kicker">Chapter 10 · Nov 2022 – 2024</div>
+        <h2 class="display huge">The ChatGPT Moment</h2>
+        <p class="lede">The week everyone noticed.</p>
+        <div class="big-stat">
+          <div class="bs-num" id="bs-count">100,000,000</div>
+          <div class="bs-caption">users in <strong>2 months</strong>. Fastest-growing app in history.<br><span class="dim">TikTok took 9 months. Instagram took 2½ years.</span></div>
+        </div>
+        <div class="fact-row">
+          <div class="fact">
+            <span class="fact-tag yellow">Curiosity</span>
+            <p>GPT-3.5-level inference got <strong>280× cheaper</strong> between Nov 2022 and Oct 2024.</p>
+          </div>
+          <div class="fact">
+            <span class="fact-tag pink">Curiosity</span>
+            <p>Training GPT-4 cost <strong>$41–71M</strong>. Training Gemini: <strong>$30–191M</strong>. Electricity bills matter.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 TODAY -->
+    <section class="scene theme-today" id="s11" data-idx="11" data-label="Today · 2025–2026">
+      <div class="grid-flow" aria-hidden="true"></div>
+      <div class="scene-inner">
+        <div class="kicker">Chapter 11 · 2025 – 2026</div>
+        <h2 class="display techno">Today — State of the Art</h2>
+        <p class="lede">Reasoning, agents, and chip designers.</p>
+
+        <div class="today-grid">
+          <article class="today-card">
+            <h3>Reasoning</h3>
+            <p>GPT-5, Claude Opus 4.6, Gemini 3 Pro — models that <em>think</em> before they answer.</p>
+            <div class="stat-line">94.3% <span>on GPQA Diamond</span></div>
+          </article>
+          <article class="today-card">
+            <h3>Agents</h3>
+            <p>Multi-step autonomous work. Grok 4 runs <em>three specialists</em> — Harper, Benjamin, Lucas — who debate before replying.</p>
+            <div class="stat-line">83% <span>on GDPval knowledge-work bench</span></div>
+          </article>
+          <article class="today-card">
+            <h3>Self-improving</h3>
+            <p>AI designs computer chips in <strong>6 hours</strong>. Humans take months. The students are teaching the teachers.</p>
+          </article>
+          <article class="today-card">
+            <h3>New math</h3>
+            <p>Gemini&rsquo;s <em>Deep Think</em> solved <strong>4 previously-open</strong> mathematical problems during its evaluation. A first.</p>
+          </article>
+        </div>
+
+        <!-- ELECTROLUX TIE-IN -->
+        <div class="tie-in">
+          <div class="tie-kicker">And us?</div>
+          <h3 class="tie-title">AI in our kitchens and laundry rooms.</h3>
+          <ul class="tie-list">
+            <li><strong>Predictive maintenance</strong> — appliances that tell you they&rsquo;ll need a service <em>before</em> they break.</li>
+            <li><strong>Computer-vision cooking</strong> — ovens that recognize the dish and pick the program.</li>
+            <li><strong>Connected learning</strong> — the washer that optimizes cycles based on how <em>you</em> actually use it.</li>
+          </ul>
+          <p class="tie-foot">The same thread that started with Turing now runs through our product lines.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 OUTRO -->
+    <section class="scene theme-outro" id="s12" data-idx="12" data-label="What's next?">
+      <div class="starfield deep" aria-hidden="true">
+        <div class="layer l1"></div>
+        <div class="layer l2"></div>
+        <div class="layer l3"></div>
+      </div>
+      <div class="scene-inner align-center">
+        <div class="kicker">Outro</div>
+        <h2 class="display mega">So&hellip; what&rsquo;s next?</h2>
+        <p class="lede dim">Some open questions for the team.</p>
+        <ul class="questions">
+          <li class="q"><span class="qn">01</span> If an AI reasons better than us on a task, who is <em>accountable</em> when it gets it wrong &mdash; the engineer, the company, or the model?</li>
+          <li class="q"><span class="qn">02</span> Where is the line between an appliance that <em>helps</em> you and one that <em>decides</em> for you &mdash; and who should draw it?</li>
+          <li class="q"><span class="qn">03</span> As AI agents start doing multi-step work autonomously, which parts of <em>our</em> jobs should stay human &mdash; and why?</li>
+          <li class="q"><span class="qn">04</span> Models are trained on data we all produced. Who <em>owns</em> the intelligence that comes out the other side?</li>
+          <li class="q"><span class="qn">05</span> If the next 10 years of AI compress into 2, what&rsquo;s the one thing we should start building at Electrolux <em>today</em>?</li>
+        </ul>
+        <div class="end-mark">
+          <svg viewBox="0 0 80 80" width="60" height="60" aria-hidden="true">
+            <circle cx="40" cy="40" r="8" fill="#fbbe00" class="end-glow"/>
+          </svg>
+          <p class="end-text">Thank you.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========= VENDOR LIBS ========= -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+
+  <!-- ========= APP ========= -->
+  <script src="scripts/main.js"></script>
+  <script src="scripts/scenes.js"></script>
+  <script src="scripts/nav.js"></script>
+</body>
+</html>

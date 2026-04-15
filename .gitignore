@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# External reference repo (cloned for design inspiration, not part of this project)
+awesome-design-md/
+
+# Local Claude Code settings (keep launch.json, exclude personal settings)
+.claude/settings.local.json
+
+# Dependencies (if ever added)
+node_modules/
